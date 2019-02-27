@@ -25,10 +25,6 @@ class Desk():
                 	if 0 == desk[x]:
                         	return x
 	def check_move(self,move):
-		l_bound = [0,4,8,12]
-		r_bound = [3,7,11,15]
-		u_bound = [0,1,2,3]
-		d_bound = [16,15,14,13]
 		g_bonds = {'w':[0,1,2,3],'s':[16,15,14,13],'a':[0,4,8,12],'d':[3,7,11,15]}
 		if self.get_zero() in g_bonds[move]:
 			raise Exception("Dont break game!")
