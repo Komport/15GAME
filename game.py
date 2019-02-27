@@ -4,7 +4,7 @@ from terminaltables import SingleTable
 
 class Desk():
 	ulist = None
-	my_numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0]
+	my_numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15," "]
 	def __init__(self):
 		self.ulist = self.my_numbers.copy()
 		shuffle(self.ulist)
@@ -31,11 +31,11 @@ class Desk():
 
 	def get_zero(self):
 		desk = self.get_desk()
-		for x in desk:
-                	if 0 == desk[x]:
+		for x in range (0,len(desk)):
+                	if " " == desk[x]:
                         	return x
 	def check_move(self,move):
-		g_bonds = {'w':[0,1,2,3],'s':[16,15,14,13],'a':[0,4,8,12],'d':[3,7,11,15]}
+		g_bonds = {'s':[0,1,2,3],'w':[16,15,14,13],'d':[0,4,8,12],'a':[3,7,11,15]}
 		if self.get_zero() in g_bonds[move]:
 			raise Exception("Dont break game!")
 		else:
@@ -44,13 +44,13 @@ class Desk():
 	def make_move(self,move):
 		zero = self.get_zero()
 		if move == 'w':
-			self.set_desk(zero,zero-4)
-		elif move == 's':
 			self.set_desk(zero,zero+4)
+		elif move == 's':
+			self.set_desk(zero,zero-4)
 		elif move == 'a':
-			self.set_desk(zero,zero-1)
-		elif move == 'd':
 			self.set_desk(zero,zero+1)
+		elif move == 'd':
+			self.set_desk(zero,zero-1)
 		else:
 			raise Exception("""Game controls - w=up,s=down,a=left,d=right""")	
 	
