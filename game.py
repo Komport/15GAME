@@ -1,4 +1,6 @@
 from random import shuffle
+from terminaltables import SingleTable
+
 
 class Desk():
 	ulist = None
@@ -14,9 +16,17 @@ class Desk():
 		self.ulist[x],self.ulist[y] = self.ulist[y],self.ulist[x]
 
 	def print_desk(self):
-        	desk = self.get_desk()
-        	for i in range(0,len(desk),4):
-                	print( desk[i:i+4])
+		desk = self.get_desk()
+		t_desk = list()
+		for i in range(0,len(desk),4):
+			clist = (desk[i:i+4])
+			t_desk.append(clist)
+		table_instance = SingleTable(t_desk)
+		table_instance.outer_border = True
+		table_instance.inner_heading_row_border = True
+		table_instance.inner_column_border = True
+		table_instance.inner_row_border = True
+		print(table_instance.table)
 
 
 	def get_zero(self):
